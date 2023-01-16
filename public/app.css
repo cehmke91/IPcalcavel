@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+
+body {
+    display: flex;
+    flex-direction: column;
+
+    margin: 0;
+    min-height: 100vh;
+}
+
+
+header {
+    display: flex;
+    justify-content: center;
+
+    height: 5rem;
+    
+    color: white;
+    background-color: #010C80;
+}
+
+footer {
+    margin: 1rem;
+    margin-top: auto;
+    align-self: flex-end;
+}
+
+h1 {
+    font-family: 'Lato', sans-serif;
+}
+
+.content {
+    margin: 1rem;
+}
+

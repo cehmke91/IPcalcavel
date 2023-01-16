@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <title>IPcalcavel {% block title %}{% endblock %}</title>
+
+        <link rel="stylesheet" href="app.css" />
+        {% block stylesheets %}
+        {% endblock %}
+    </head>
+    <body>
+        {% include 'components/header' %}
+
+        <div class="content">
+            {% block content %}{% endblock %}
+        </div>
+
+        {% include 'components/footer' %}
+        {% block scripts %}
+            {# <script src="app.js"></script> #}
+        {% endblock %}
+    </body>
+</html>
