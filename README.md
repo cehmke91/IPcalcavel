@@ -37,3 +37,13 @@ Take into account that the general idea for the code created should be that the 
 
 - from the project directory run `php artisan serve` to run a local server.
 - In a web browser, go to `http://127.0.0.1:8000` to see the project.
+
+
+## Things done
+- BONUS: 80 chars
+- install twig bridge
+- install sushi
+- imported a custom font
+- Create a basic page layout in twig
+- Shift the router to use controllers
+- Created a custom validation rule

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\IPAddress;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
@@ -20,9 +21,11 @@ class SubnetInfoController extends Controller
             'ip' => [ 'required' , new CIDRIPAddressRule ]
         ]);
 
-        $ip = $validated['ip'];
+        $address = IPAddress::fromCIDRNotation($validated['ip']);
+
+        var_dump($address);
 
 
-        return new Response($ip);
+        return new Response(1);
     }
 }
