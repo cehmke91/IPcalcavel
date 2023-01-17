@@ -65,10 +65,12 @@ this would also mean the classnames can be less verbose due to how styling gets 
 The api controller uses a custom rule to validate the subnet and then passes it on to the `IPAddressService`
 where the business logic is performed. Again I find it to be cleaner to not clutter controllers with business logic,
 their purpose should be to direct 'traffic' in the application. The actual logic and processing should reside elsewhere.
+This is also where you will find the calculation logic.
 
 I chose to use AJAX to retrieve the information from the webserver mostly because it's a simple interface. Axios is the obvious
 replacement but I'm unfimiliar with it, and given that the twig templates seem to be missing some functionality at the moment
-I chose to instead use something known in the interest of time.
+I chose to instead use something known in the interest of time. This would likely also be an improvement in allowing twig to
+format numbers to be more readable.
 
 Were I to extend this project further I would first look at also working with IPv6, following that I would spend more time
 on fixing the twig bridge so that the frontend assets can be properly bundled and accessed. Beyond that unit tests would also
