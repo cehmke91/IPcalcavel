@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use App\Rules\CIDRIPAddressRule;
+use App\Services\IPAddressService;
 
 /**
  *  This controller handles requests to calculate IP ranges
@@ -22,10 +23,12 @@ class SubnetInfoController extends Controller
         ]);
 
         $address = IPAddress::fromCIDRNotation($validated['ip']);
+        $subnetRange = IPAddressService::calculateSubnetRange($address);
 
-        var_dump($address);
-
-
-        return new Response(1);
+        return new Response(json_encode([
+            'network' => $address->networkId(),
+            'host' => $address->host(),
+            'subnet_range' => $subnetRange,
+        ]));
     }
 }

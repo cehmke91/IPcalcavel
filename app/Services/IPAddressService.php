@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Exceptions\InvalidCIDRFormattedIPException;
 use App\Exceptions\InvalidCIDRSubnetNumberException;
+use App\Models\IPAddress;
 
 /**
  *  This class is used to interact with IP addresses and contains functions
@@ -65,9 +66,9 @@ class IPAddressService
      */
     public static function CIDRToMask(int $subnet): string
     {
-        if (self::isValidCIDRSubnetNumber($subnet)) {
+        if (!self::isValidCIDRSubnetNumber($subnet)) {
             throw new InvalidCIDRSubnetNumberException(
-                "Subnet number must be between 1 and 32, inclusive"
+                "Subnet number must be between 0 and 32, inclusive"
             );
         }
 
@@ -87,5 +88,35 @@ class IPAddressService
 
         // return in string format.
         return implode(".", $subnetMask);
+    }
+
+    /**
+     *  Calculate the subnet range for a given IP address.
+     */
+    public static function calculateSubnetRange(IPAddress $address): array
+    {
+        // $first = '';
+        // $last = '';
+        // $hosts = 0;
+
+        // $ip = explode('.', $address->ip);
+        // $subnet = explode('.', $address->subnet);
+
+        // foreach ($subnet as $i => $part) {
+        //     // if the mask completely covers this range then we can assume
+        //     // that they are the same as the IP.
+        //     if ($part === '255') {
+        //         $first .= $ip[$i];
+        //         $last .= $ip[$i];
+        //     }
+
+
+        // }
+
+        return [
+            'first' => $address->ip,
+            'last' => $address->ip,
+            'hosts' => 0
+        ];
     }
 }
