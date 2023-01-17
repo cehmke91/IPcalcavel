@@ -130,7 +130,7 @@ class IPAddressService
         return [
             'first' => ltrim($first, '.'),
             'last' => ltrim($last, '.'),
-            'hosts' => $range
+            'hosts' => $hosts
         ];
     }
 }
