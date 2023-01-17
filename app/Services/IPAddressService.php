@@ -95,28 +95,42 @@ class IPAddressService
      */
     public static function calculateSubnetRange(IPAddress $address): array
     {
-        // $first = '';
-        // $last = '';
-        // $hosts = 0;
+        $first = '';
+        $last = '';
+        $hosts = 1; // since this host is present there must be 1
 
-        // $ip = explode('.', $address->ip);
-        // $subnet = explode('.', $address->subnet);
+        // break the ip and subnet mask into parts so we can work on
+        // each part individually.
+        $ip = explode('.', $address->ip);
+        $subnetMask = explode('.', $address->subnetMask);
 
-        // foreach ($subnet as $i => $part) {
-        //     // if the mask completely covers this range then we can assume
-        //     // that they are the same as the IP.
-        //     if ($part === '255') {
-        //         $first .= $ip[$i];
-        //         $last .= $ip[$i];
-        //     }
+        foreach ($subnetMask as $i => $part) {
+            // if the mask completely covers this range then we can assume
+            // that they are the same as the IP.
+            if ($part === '255') {
+                $first .= '.'.$ip[$i];
+                $last .= '.'.$ip[$i];
+                continue;
+            }
 
+            // Get the range then multiply the number of hosts by the range.
+            // This is multiplied because the part which follows will have
+            // its' own full range for each of the addresses in this range.
+            $range = 254 - (int) $part;
+            $hosts *= $range;
 
-        // }
+            // append the first address value
+            $first .= '.' . $ip[$i];
+
+            // calculate the last address value
+            $lastValue = (int) $ip[$i] + $range;
+            $last .= '.' . (string) $lastValue;
+        }
 
         return [
-            'first' => $address->ip,
-            'last' => $address->ip,
-            'hosts' => 0
+            'first' => ltrim($first, '.'),
+            'last' => ltrim($last, '.'),
+            'hosts' => $range
         ];
     }
 }

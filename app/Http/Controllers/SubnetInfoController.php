@@ -28,6 +28,7 @@ class SubnetInfoController extends Controller
         return new Response(json_encode([
             'network' => $address->networkId(),
             'host' => $address->host(),
+            'subnet_mask' => $address->subnetMask,
             'subnet_range' => $subnetRange,
         ]));
     }
