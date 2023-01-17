@@ -3,9 +3,22 @@
 :root {
     --blue-light: #0114d9;
     --blue: #010C80;
-}  
+
+    --background: #ffffff;
+    --text: #000000;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background: #282828;
+        --text: #ffffff;
+    }
+}
 
 body {
+    background-color: var(--background);
+    color: var(--text);
+
     display: flex;
     flex-direction: column;
 
@@ -32,6 +45,10 @@ footer {
 
 h1 {
     font-family: 'Lato', sans-serif;
+}
+
+.error {
+    color: red;
 }
 
 .content {

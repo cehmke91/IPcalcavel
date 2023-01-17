@@ -6,7 +6,7 @@ $(function() {
 
         // reset anything from the previous submit first.
         $('.subnet-range-calc-input').css('border-bottom', '1px solid black');
-        $('#subnet-range-calc-output').css('color', 'black').empty();
+        $('#subnet-range-calc-output').removeClass('error').empty();
 
         const form = $(this);
         const url = window.location.origin + form.attr('action');
@@ -44,7 +44,7 @@ $(function() {
 
             error: function (data) {
                 $('#subnet-range-calc-output')
-                    .css('color', 'red')    
+                    .addClass('error')    
                     .text("ERROR: " + data.responseJSON.message);
                 $('.subnet-range-calc-input')
                     .css('border-bottom', '1px solid red');
