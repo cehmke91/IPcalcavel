@@ -3,7 +3,37 @@
 {% block title %}- Subnet info calculator {% endblock %}
 
 {% block content %}
+<div class="subnet-range-calc">
 
-    <h1>woo!</h1>
+    <form id="subnet-range-calc-form" action="/api/subnet">
 
+        
+            <label class="form-label" for="ip">
+                Calculate subnet range from IP:
+            </label>
+
+            <div class="subnet-range-calc-form-group">
+            <input 
+                class="subnet-range-calc-input"
+                type="text"
+                id="ip"
+                name="ip"
+                required
+            />
+            <input
+                class="subnet-range-calc-submit"
+                type="submit"
+                value="Calculate"
+            />
+        </div>
+
+    </form>
+    
+    <div id="subnet-range-calc-output"></div>
+
+</div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="js/SubnetRangeCalcFormHandler.js"></script>
 {% endblock %}

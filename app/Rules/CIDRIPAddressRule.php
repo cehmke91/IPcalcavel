@@ -17,16 +17,16 @@ class CIDRIPAddressRule implements InvokableRule
 
         try {
             $parts = IPAddressService::splitCIDRNotation($value);
+
+            if (!IPAddressService::isValidIPAddress($parts['address'])) {
+                $fail('The IP part in :attribute must be a valid IP address.');
+            }
+            
+            if (!IPAddressService::isValidCIDRSubnetNumber($parts['subnet'])) {
+                $fail('The Subnet part in :attribute must be valid.');
+            }
         } catch (InvalidCIDRFormattedIPException $e) {
             $fail(':attribute must be a CIDR formatted IP address.');
-        }
-        
-        if (!IPAddressService::isValidIPAddress($parts['address'])) {
-            $fail('The IP part in :attribute must be a valid IP address.');
-        }
-        
-        if (!IPAddressService::isValidCIDRSubnetNumber($parts['subnet'])) {
-            $fail('The Subnet part in :attribute must be valid.');
         }
     }
 }

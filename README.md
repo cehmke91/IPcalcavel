@@ -33,11 +33,14 @@ Output:
 
 Take into account that the general idea for the code created should be that the code will be used in a larger web-based application.
 
+## Requirements
+- PHP8.0.2 (I could not find and configure a working earlier version to download)
+- composer
+
 ## Setup instructions
 
 - from the project directory run `php artisan serve` to run a local server.
-- In a web browser, go to `http://127.0.0.1:8000` to see the project.
-
+- In a web browser, go to `http://127.0.0.1:8000` or where artisan is serving to see the Project.
 
 ## Things done
 - BONUS: 80 chars
