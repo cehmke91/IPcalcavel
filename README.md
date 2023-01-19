@@ -34,7 +34,7 @@ Output:
 Take into account that the general idea for the code created should be that the code will be used in a larger web-based application.
 
 ## Requirements
-- PHP8.0.2 (I could not find and configure a working earlier version to download, it should be 7.4 compatible but composer will bark at you.)
+- PHP8.0.2 (I could not find and configure a working earlier version to download using Windows, it should be 7.4 compatible but composer will bark at you.)
 - composer
 
 ## Setup instructions
